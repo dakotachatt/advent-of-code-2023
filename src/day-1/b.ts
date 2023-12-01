@@ -3,7 +3,34 @@ import chalk from 'chalk';
 
 export async function day1b(dataPath?: string) {
   const data = await readData(dataPath);
-  return 0;
+
+  let calibrationNumberSum = 0;
+
+  const stringToDigitMap: Map<string, number> = new Map(Object.entries({
+    'one': 1,
+    'two': 2,
+    'three': 3,
+    'four': 4,
+    'five': 5,
+    'six': 6,
+    'seven': 7,
+    'eight': 8,
+    'nine': 9
+  }));
+
+  for(const line of data) {
+    for(const entry in stringToDigitMap) {
+
+    }
+
+    // const firstDigit = numbersInLine.slice(0,1);
+    // const lastDigit = numbersInLine.slice(numbersInLine.length - 1);
+    // const joinedNumber = firstDigit + lastDigit
+
+    // calibrationNumberSum += Number.parseInt(joinedNumber);
+  }
+
+  return calibrationNumberSum;
 }
 
 // don't change below this line

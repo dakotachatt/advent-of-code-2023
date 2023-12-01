@@ -3,7 +3,20 @@ import chalk from 'chalk';
 
 export async function day1a(dataPath?: string) {
   const data = await readData(dataPath);
-  return 0;
+
+  let calibrationNumberSum = 0;
+
+  for(const line of data) {
+    const numbersInLine = line.match(/\d+/g).join('');
+
+    const firstDigit = numbersInLine.slice(0,1);
+    const lastDigit = numbersInLine.slice(numbersInLine.length - 1);
+    const joinedNumber = firstDigit + lastDigit
+
+    calibrationNumberSum += Number.parseInt(joinedNumber);
+  }
+
+  return calibrationNumberSum;
 }
 
 // don't change below this line
