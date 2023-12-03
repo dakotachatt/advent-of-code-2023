@@ -6,28 +6,44 @@ export async function day1b(dataPath?: string) {
 
   let calibrationNumberSum = 0;
 
-  const stringToDigitMap: Map<string, number> = new Map(Object.entries({
-    'one': 1,
-    'two': 2,
-    'three': 3,
-    'four': 4,
-    'five': 5,
-    'six': 6,
-    'seven': 7,
-    'eight': 8,
-    'nine': 9
+  const stringToDigitMap: Map<string, string> = new Map(Object.entries({
+    'one': '1',
+    'two': '2',
+    'three': '3',
+    'four': '4',
+    'five': '5',
+    'six': '6',
+    'seven': '7',
+    'eight': '8',
+    'nine': '9'
   }));
 
   for(const line of data) {
-    for(const entry in stringToDigitMap) {
+    let stringToNumberLineFormatted = line;
 
+    console.log(line);
+
+    for (const [key, value] of stringToDigitMap.entries()) {
+      const valueArray = key.split('');
+
+      valueArray.splice(1, 0, value);
+
+      const newValue = valueArray.join('')
+
+      stringToNumberLineFormatted = stringToNumberLineFormatted.replaceAll(key, newValue);
     }
 
-    // const firstDigit = numbersInLine.slice(0,1);
-    // const lastDigit = numbersInLine.slice(numbersInLine.length - 1);
-    // const joinedNumber = firstDigit + lastDigit
+    console.log(stringToNumberLineFormatted)
 
-    // calibrationNumberSum += Number.parseInt(joinedNumber);
+    const numbersInLine = stringToNumberLineFormatted.match(/\d+/g).join('');
+
+    const firstDigit = numbersInLine.slice(0,1);
+    const lastDigit = numbersInLine.slice(numbersInLine.length - 1);
+    const joinedNumber = firstDigit + lastDigit
+
+    console.log(joinedNumber);
+
+    calibrationNumberSum += Number.parseInt(joinedNumber);
   }
 
   return calibrationNumberSum;
